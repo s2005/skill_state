@@ -1,0 +1,27 @@
+{
+  "name": "skill-state",
+  "version": "0.1.0",
+  "description": "SKILL.state (arXiv:2608.26263) explicit execution state for long-horizon Claude Code skills, as a function-hook plugin",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit && tsc --noEmit -p plugin",
+    "lint": "eslint .",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+    "test": "vitest run",
+    "test:plugin": "claude plugin test plugin",
+    "check": "npm run lint && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "markdownlint-cli2": "^0.23.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "vitest": "^5.0.2"
+  }
+}

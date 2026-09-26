@@ -1,0 +1,8 @@
+{
+  "name": "skill-state",
+  "version": "0.1.0",
+  "description": "SKILL.state explicit execution state: schema-validated state tool, action-bound tool gating and turn-end frame compaction",
+  "author": { "name": "s2005" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}

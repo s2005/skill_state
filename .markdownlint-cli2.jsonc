@@ -1,0 +1,7 @@
+{
+  "config": {
+    // Line length is exempt so the linter does not fight prose.
+    "MD013": false
+  },
+  "ignores": ["node_modules/**", "docs/SKILLSTATE_*.md"]
+}

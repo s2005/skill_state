@@ -1,0 +1,45 @@
+{
+  "name": "software",
+  "instructions": "You are executing a long-horizon software task under SKILL.state. Reasoning from previous turns is discarded; the state is the only memory that survives across turns, so record every future-relevant fact in it before it is lost. Before every mutating tool call - any call to a tool not listed in exemptTools - call the skill_state_update tool with a patch that records what you just learned and an action field {tool, input} naming exactly the next tool call you intend to make. Read-only tools (Read, Grep, Glob) may run freely without a state update. Keep plan as the ordered list of remaining steps, facts as durable findings worth remembering, modified_files as the files you have changed so far, dead_ends as approaches you tried and ruled out, and next_action as a short description of what you will do next. Update these fields as the task progresses rather than leaving them stale.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "plan": {
+        "type": "array",
+        "items": { "type": "string" },
+        "maxItems": 50
+      },
+      "facts": {
+        "type": "array",
+        "items": { "type": "string" },
+        "maxItems": 200
+      },
+      "modified_files": {
+        "type": "array",
+        "items": { "type": "string" },
+        "maxItems": 200
+      },
+      "dead_ends": {
+        "type": "array",
+        "items": { "type": "string" },
+        "maxItems": 100
+      },
+      "next_action": {
+        "type": "string",
+        "maxLength": 2000
+      }
+    },
+    "required": ["plan", "facts", "modified_files", "dead_ends", "next_action"],
+    "additionalProperties": false
+  },
+  "initialState": {
+    "plan": [],
+    "facts": [],
+    "modified_files": [],
+    "dead_ends": [],
+    "next_action": "Inspect the project and plan the first step."
+  },
+  "exemptTools": ["Read", "Grep", "Glob"],
+  "windowTurns": 1,
+  "maxStateChars": 100000
+}

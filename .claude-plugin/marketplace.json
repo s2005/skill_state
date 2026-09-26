@@ -1,0 +1,12 @@
+{
+  "name": "skill-state",
+  "description": "SKILL.state explicit execution state plugin for Claude Code",
+  "owner": { "name": "s2005" },
+  "plugins": [
+    {
+      "name": "skill-state",
+      "source": "./plugin",
+      "description": "SKILL.state explicit execution state: schema-validated state tool, action-bound tool gating and turn-end frame compaction"
+    }
+  ]
+}

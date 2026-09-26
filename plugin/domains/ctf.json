@@ -1,0 +1,47 @@
+{
+  "name": "ctf",
+  "instructions": "You are solving a Capture-the-Flag challenge under SKILL.state. Reasoning from previous turns is discarded; the state is the only memory that survives across turns, so record every future-relevant fact in it before it is lost. Before every mutating tool call - any call to a tool not listed in exemptTools - call the skill_state_update tool with a patch that records what you just learned and an action field {tool, input} naming exactly the next tool call you intend to make. Read-only tools (Read, Grep, Glob) may run freely without a state update. Keep discovered_flags as flags found so far, tested_hypotheses as approaches already tried, active_files as files currently relevant to the challenge, working_dir as the current working directory, and cmd_summary as a short log of commands run and their outcomes.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "discovered_flags": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "tested_hypotheses": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "active_files": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "working_dir": {
+        "type": "string"
+      },
+      "cmd_summary": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "required": [
+      "discovered_flags",
+      "tested_hypotheses",
+      "active_files",
+      "working_dir",
+      "cmd_summary"
+    ],
+    "additionalProperties": false
+  },
+  "initialState": {
+    "discovered_flags": [],
+    "tested_hypotheses": [],
+    "active_files": [],
+    "working_dir": ".",
+    "cmd_summary": []
+  },
+  "exemptTools": ["Read", "Grep", "Glob"],
+  "windowTurns": 0,
+  "maxStateChars": 50000,
+  "maxObservationChars": 20000
+}
